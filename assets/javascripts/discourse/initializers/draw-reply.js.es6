@@ -11,7 +11,7 @@ export default
     {
         const siteSettings = container.lookup('site-settings:main');
 
-        if (siteSettings.replygif_enabled) {
+        if (siteSettings.draw_reply_enabled) {
             if (NewComposer !== "undefined") {
                 NewComposer.reopen({
                     actions: {
