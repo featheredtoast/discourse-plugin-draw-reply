@@ -132,6 +132,7 @@ export default Ember.View.extend({
             $(sigCanvas).unbind("mousemove")
                 .unbind("mouseup")
                 .unbind("mouseout");
+            console.log(sigCanvas.toDataURL("image/png;base64;"));
         }
 
         var canvas = this.get('element');
