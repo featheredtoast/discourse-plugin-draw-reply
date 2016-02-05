@@ -2,6 +2,6 @@ import ModalBodyView from 'discourse/views/modal-body';
 
 export default ModalBodyView.extend({
   title: function () {
-    return "Titlessss"
+    return "Draw a reply!"
   }.property()
 });

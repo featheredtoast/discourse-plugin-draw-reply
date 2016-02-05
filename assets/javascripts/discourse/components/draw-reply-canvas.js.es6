@@ -2,7 +2,14 @@ export default Ember.View.extend({
     tagName: 'canvas',
     mouseUp: function(event) {
         var canvas = this.get('element');
-        console.log(canvas.toDataURL("image/png;base64;"));
+        this.get('controller').send('draw',canvas.toDataURL("image/png;base64;"));
+    },
+    mouseLeave: function(event) {
+        var canvas = this.get('element');
+        this.get('controller').send('draw',canvas.toDataURL("image/png;base64;"));
+    },
+    touchEnd: function(event) {
+        var canvas = this.get('element');
         this.get('controller').send('draw',canvas.toDataURL("image/png;base64;"));
     },
     didInsertElement: function(){
@@ -139,25 +146,5 @@ export default Ember.View.extend({
 
         var canvas = this.get('element');
         initialize(canvas);
-        var ctx = canvas.getContext('2d');
-
-
-        // Filled triangle
-        ctx.beginPath();
-        ctx.moveTo(25,25);
-        ctx.lineTo(105,25);
-        ctx.lineTo(25,105);
-        ctx.fill();
-
-
-
-
-        // Stroked triangle
-        ctx.beginPath();
-        ctx.moveTo(125,125);
-        ctx.lineTo(125,45);
-        ctx.lineTo(45,125);
-        ctx.closePath();
-        ctx.stroke();
     }
 });

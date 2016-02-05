@@ -1,7 +1,7 @@
 import ModalFunctionality from 'discourse/mixins/modal-functionality';
 
 export default Ember.Controller.extend(ModalFunctionality, {
-    pictureData: "test",
+    pictureData: "",
 
     actions: {
         draw: function(pictureData) {
@@ -9,7 +9,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
             this.set("pictureData", pictureData);
         },
         apply: function() {
-            var output = this.get("pictureData"), self = this;
+            var output = '<img src="' + this.get("pictureData") + '"/>',
+                self = this;
 
             //TODO: do something here to send canvas data
             if (self.composerViewOld)
