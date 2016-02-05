@@ -91,7 +91,7 @@ export default Ember.View.extend({
                 
                 // start drawing when the mousedown event fires, and attach handlers to
                 // draw a line to wherever the mouse moves to
-                $("#canvasSignature").mousedown(function (mouseEvent) {
+                sigCanvas.addEventListener('mousedown', function(mouseEvent) {
                     var position = getPosition(mouseEvent, sigCanvas);
                     
                     context.moveTo(position.X, position.Y);
@@ -105,8 +105,7 @@ export default Ember.View.extend({
                     }).mouseout(function (mouseEvent) {
                         finishDrawing(mouseEvent, sigCanvas, context);
                     });
-                });
-                
+                }, false);
             }
         }
         
