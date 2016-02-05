@@ -4,6 +4,10 @@ export default Ember.Controller.extend(ModalFunctionality, {
     pictureData: "test",
 
     actions: {
+        draw: function(pictureData) {
+            console.log("setting picture data to: " + pictureData);
+            this.set("pictureData", pictureData);
+        },
         apply: function() {
             var output = this.get("pictureData"), self = this;
 

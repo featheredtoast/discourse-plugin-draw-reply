@@ -1,8 +1,10 @@
 export default Ember.View.extend({
     tagName: 'canvas',
-    quader: function () {
-        return this.get('controller.model');
-    }.property('controller.model'),
+    mouseUp: function(event) {
+        var canvas = this.get('element');
+        console.log(canvas.toDataURL("image/png;base64;"));
+        this.get('controller').send('draw',canvas.toDataURL("image/png;base64;"));
+    },
     didInsertElement: function(){
 
         // works out the X, Y position of the click inside the canvas from the X, Y position on the page
@@ -132,7 +134,7 @@ export default Ember.View.extend({
             $(sigCanvas).unbind("mousemove")
                 .unbind("mouseup")
                 .unbind("mouseout");
-            console.log(sigCanvas.toDataURL("image/png;base64;"));
+
         }
 
         var canvas = this.get('element');
