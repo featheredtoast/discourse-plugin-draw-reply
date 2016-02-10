@@ -9,14 +9,11 @@ export default Ember.Controller.extend(ModalFunctionality, {
             this.set("pictureData", pictureData);
         },
         apply: function() {
-            var output = '<img src="' + this.get("pictureData") + '"/>',
+            var blob = this.get("pictureData"),
                 self = this;
 
             //TODO: do something here to send canvas data
-            if (self.composerViewOld)
-                self.composerViewOld.addMarkdown(output);
-            else if (self.composerView)
-                self.composerView._addText(self.composerView._getSelected(), output);
+            $(".d-editor-input").fileupload('add', {files: blob});
 
             this.send('closeModal');
         }

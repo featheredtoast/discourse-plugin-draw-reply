@@ -1,16 +1,16 @@
 export default Ember.View.extend({
     tagName: 'canvas',
     mouseUp: function(event) {
-        var canvas = this.get('element');
-        this.get('controller').send('draw',canvas.toDataURL("image/png;base64;"));
+        var canvas = this.get('element'), self = this;
+        canvas.toBlob(blob => this.get('controller').send('draw',blob));
     },
     mouseLeave: function(event) {
         var canvas = this.get('element');
-        this.get('controller').send('draw',canvas.toDataURL("image/png;base64;"));
+        canvas.toBlob(blob => this.get('controller').send('draw',blob));
     },
     touchEnd: function(event) {
         var canvas = this.get('element');
-        this.get('controller').send('draw',canvas.toDataURL("image/png;base64;"));
+        canvas.toBlob(blob => this.get('controller').send('draw',blob));
     },
     didInsertElement: function(){
 
